@@ -1,9 +1,16 @@
+let arr = [0, 10, 20, 30];
+let fn = function greaterThan10(n) {
+  return n > 10;
+};
+
 var filter = function (arr, fn) {
-  let newarr = [];
+  let filteredArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (fn(arr[i], i)) {
-      newarr.push(arr[i]);
+      filteredArr.push(arr[i]);
     }
   }
-  return newarr;
+  return filteredArr;
 };
+
+console.log(filter(arr, fn));
