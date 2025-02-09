@@ -14,9 +14,9 @@ let functions = [(x) => x + 1, (x) => x * x, (x) => 2 * x],
 var compose = function (functions) {
   return function (x) {
     for (let i = functions.length - 1; i >= 0; i--) {
-      x = functions[i](x); // remember this give a argument as a x
+      result = functions[i](x); // remember this give a argument as a x
     }
-    return x;
+    return result;
   };
 };
 compose(functions);
