@@ -9,7 +9,7 @@ export const checkPasswordStrength = (password) => {
   let atLeastOneDigit = false;
   let specialChar = false;
 
-  for (i = 0; i <= password.length - 1; i++) {
+  for (let i = 0; i <= password.length - 1; i++) {
     if (password[i] == password[i].toUpperCase()) {
       upperCaseLetter = true;
     } else if (password[i] == password[i].toLowerCase()) {
@@ -20,14 +20,27 @@ export const checkPasswordStrength = (password) => {
       specialChar = true;
     }
   }
+  const allLevels = {
+    length,
+    upperCaseLetter,
+    lowerCaseLetter,
+    atLeastOneDigit,
+    specialChar,
+  };
+
+  const passed = Object.values(allLevels).filter(Boolean).length;
+  console.log(passed);
 };
 
 const PasswordStrength = () => {
   const [inputText, setInputText] = useState("");
+  const [strength, setStrength] = useState(null);
 
   const passwordString = () => {
     const result = checkPasswordStrength(inputText);
-    console.log(result);
+    if (result) {
+      setStrength("Level " + result);
+    }
   };
 
   return (
@@ -40,7 +53,7 @@ const PasswordStrength = () => {
           placeholder="Enter Password"
         />
         <button onClick={passwordString}>check Strength</button>
-        <h1>Strength:{}</h1>
+        <h1>Strength: {strength}</h1>
       </div>
     </div>
   );
